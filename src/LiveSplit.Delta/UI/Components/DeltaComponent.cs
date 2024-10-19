@@ -30,12 +30,7 @@ public class DeltaComponent : IComponent
         {
             CurrentState = state
         };
-        Formatter = new GeneralTimeFormatter()
-        {
-            NullFormat = NullFormat.Dash,
-            Accuracy = Settings.Accuracy,
-            DropDecimals = Settings.DropDecimals,
-        };
+        Formatter = new DeltaTimeFormatter();
         InternalComponent = new InfoTimeComponent(null, null, Formatter);
         state.ComparisonRenamed += state_ComparisonRenamed;
     }
