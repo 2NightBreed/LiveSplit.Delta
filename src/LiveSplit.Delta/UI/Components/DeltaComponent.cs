@@ -131,7 +131,13 @@ public class DeltaComponent : IComponent
 
         string comparisonName = comparison.StartsWith("[Race] ") ? comparison[7..] : comparison;
 
+        bool isComparisonBestSplitTimes = comparisonName.Contains("Best Split Times");
+        bool isUseBestPaceEverSettingChecked = true;
+        bool shouldUseBestPaceEver = isComparisonBestSplitTimes && isUseBestPaceEverSettingChecked;
+        string customComparisonName = shouldUseBestPaceEver ? "Best Pace Ever?" : comparisonName;
+
         bool useLiveDelta = false;
+        bool bestPace = false;
         if (state.CurrentPhase is TimerPhase.Running or TimerPhase.Paused)
         {
             TimeSpan? delta = LiveSplitStateHelper.GetLastDelta(state, state.CurrentSplitIndex, comparison, state.CurrentTimingMethod);
@@ -143,17 +149,26 @@ public class DeltaComponent : IComponent
             }
 
             InternalComponent.TimeValue = delta;
+            bestPace = delta < TimeSpan.Zero;
         }
         else if (state.CurrentPhase == TimerPhase.Ended)
         {
             InternalComponent.TimeValue = state.Run.Last().SplitTime[state.CurrentTimingMethod] - state.Run.Last().Comparisons[comparison][state.CurrentTimingMethod];
+            bestPace = InternalComponent.TimeValue < TimeSpan.Zero;
         }
         else
         {
             InternalComponent.TimeValue = null;
         }
 
-        string text = comparisonName;
+        string bestPaceText = " ";
+        if (shouldUseBestPaceEver)
+        {
+            bool isCurrentDeltaTimeNull = InternalComponent.TimeValue == null;
+            bestPaceText += isCurrentDeltaTimeNull ? "Unknown" : bestPace ? "Yes" : "No";
+        }
+
+        string text = customComparisonName;
         if (Settings.OverrideText)
         {
             InternalComponent.AlternateNameText.Clear();
@@ -174,11 +189,18 @@ public class DeltaComponent : IComponent
             if (InternalComponent.InformationName != text)
             {
                 InternalComponent.AlternateNameText.Clear();
-                InternalComponent.AlternateNameText.Add(CompositeComparisons.GetShortComparisonName(comparison));
+                if (shouldUseBestPaceEver)
+                {
+                    InternalComponent.AlternateNameText.Add("Best Pace?" + bestPaceText);
+                }
+                else
+                {
+                    InternalComponent.AlternateNameText.Add(CompositeComparisons.GetShortComparisonName(comparison));
+                }
             }
         }
 
-        InternalComponent.InformationName = text;
+        InternalComponent.InformationName = text + bestPaceText;
 
         Color? color = LiveSplitStateHelper.GetSplitColor(state, InternalComponent.TimeValue, state.CurrentSplitIndex - (useLiveDelta ? 0 : 1), true, true, comparison, state.CurrentTimingMethod);
         if (color == null)
