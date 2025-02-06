@@ -186,7 +186,7 @@ public class DeltaComponent : IComponent
 
         InternalComponent.InformationName = text;
 
-        Color? color = LiveSplitStateHelper.GetSplitColor(state, InternalComponent.TimeValue, state.CurrentSplitIndex - (useLiveDelta ? 0 : 1), true, false, comparison, state.CurrentTimingMethod);
+        Color? color = LiveSplitStateHelper.GetSplitColor(state, InternalComponent.TimeValue, state.CurrentSplitIndex - (useLiveDelta ? 0 : 1), true, true, comparison, state.CurrentTimingMethod);
         if (color == null)
         {
             color = Settings.OverrideTextColor ? Settings.TextColor : state.LayoutSettings.TextColor;
