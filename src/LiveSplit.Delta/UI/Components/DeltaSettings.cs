@@ -28,6 +28,7 @@ public partial class DeltaSettings : UserControl
     public string Comparison { get; set; }
     public LiveSplitState CurrentState { get; set; }
     public bool Display2Rows { get; set; }
+    public bool UseBestPaceEver { get; set; }
 
     public bool OverrideText { get; set; }
     public bool DifferentialText { get; set; }
@@ -48,6 +49,7 @@ public partial class DeltaSettings : UserControl
         BackgroundGradient = GradientType.Plain;
         Comparison = "Current Comparison";
         Display2Rows = false;
+        UseBestPaceEver = false;
         DropDecimals = true;
         OverrideText = false;
         DifferentialText = false;
@@ -61,6 +63,7 @@ public partial class DeltaSettings : UserControl
         btnColor2.DataBindings.Add("BackColor", this, "BackgroundColor2", false, DataSourceUpdateMode.OnPropertyChanged);
         cmbComparison.DataBindings.Add("SelectedItem", this, "Comparison", false, DataSourceUpdateMode.OnPropertyChanged);
         chkDropDecimals.DataBindings.Add("Checked", this, "DropDecimals", false, DataSourceUpdateMode.OnPropertyChanged);
+        chkUseBestPaceEver.DataBindings.Add("Checked", this, "UseBestPaceEver", false, DataSourceUpdateMode.OnPropertyChanged);   
         chkOverrideText.DataBindings.Add("Checked", this, "OverrideText", false, DataSourceUpdateMode.OnPropertyChanged);
         chkDifferentialText.DataBindings.Add("Checked", this, "DifferentialText", false, DataSourceUpdateMode.OnPropertyChanged);
         txtCustom.DataBindings.Add("Text", this, "CustomText");
@@ -74,7 +77,14 @@ public partial class DeltaSettings : UserControl
 
     private void cmbComparison_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Comparison = cmbComparison.SelectedItem.ToString();
+        if (cmbComparison.SelectedItem.ToString().Equals(BestSplitTimesComparisonGenerator.ComparisonName) || (cmbComparison.SelectedItem.ToString().Equals("Current Comparison") && CurrentState.CurrentComparison.Equals(BestSplitTimesComparisonGenerator.ComparisonName)))
+        {
+            chkUseBestPaceEver.Enabled = true;
+        }
+        else
+        {
+            chkUseBestPaceEver.Enabled = false;
+        }
     }
 
     private void DeltaSettings_Load(object sender, EventArgs e)
@@ -150,6 +160,7 @@ public partial class DeltaSettings : UserControl
         GradientString = SettingsHelper.ParseString(element["BackgroundGradient"]);
         Comparison = SettingsHelper.ParseString(element["Comparison"]);
         Display2Rows = SettingsHelper.ParseBool(element["Display2Rows"]);
+        UseBestPaceEver = SettingsHelper.ParseBool(element["UseBestPaceEver"]);
         DropDecimals = SettingsHelper.ParseBool(element["DropDecimals"]);
         OverrideText = SettingsHelper.ParseBool(element["OverrideText"]);
         DifferentialText = SettingsHelper.ParseBool(element["DifferentialText"]);
@@ -180,6 +191,7 @@ public partial class DeltaSettings : UserControl
         SettingsHelper.CreateSetting(document, parent, "BackgroundGradient", BackgroundGradient) ^
         SettingsHelper.CreateSetting(document, parent, "Comparison", Comparison) ^
         SettingsHelper.CreateSetting(document, parent, "Display2Rows", Display2Rows) ^
+        SettingsHelper.CreateSetting(document, parent, "UseBestPaceEver", UseBestPaceEver) ^
         SettingsHelper.CreateSetting(document, parent, "DropDecimals", DropDecimals) ^
         SettingsHelper.CreateSetting(document, parent, "OverrideText", OverrideText) ^
         SettingsHelper.CreateSetting(document, parent, "DifferentialText", DifferentialText) ^

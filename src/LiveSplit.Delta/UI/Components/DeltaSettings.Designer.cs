@@ -56,6 +56,7 @@
             this.btnTextColor = new System.Windows.Forms.Button();
             this.chkOverrideTextColor = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkUseBestPaceEver = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -81,6 +82,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnColor2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.chkTwoRows, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.chkUseBestPaceEver, 3, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(7, 7);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -440,6 +442,19 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Color:";
             // 
+            // chkUseBestPaceEver
+            // 
+            this.chkUseBestPaceEver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkUseBestPaceEver.AutoSize = true;
+            this.chkUseBestPaceEver.Location = new System.Drawing.Point(224, 64);
+            this.chkUseBestPaceEver.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.chkUseBestPaceEver.Name = "chkUseBestPaceEver";
+            this.chkUseBestPaceEver.Size = new System.Drawing.Size(235, 17);
+            this.chkUseBestPaceEver.TabIndex = 5;
+            this.chkUseBestPaceEver.TabStop = false;
+            this.chkUseBestPaceEver.Text = "Use Best Pace Ever?";
+            this.chkUseBestPaceEver.UseVisualStyleBackColor = true;
+            // 
             // DeltaSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -494,5 +509,6 @@
         private System.Windows.Forms.TextBox txtCustom;
         private System.Windows.Forms.Label lblCustomTextAhead;
         private System.Windows.Forms.RadioButton rdoMilliseconds;
+        private System.Windows.Forms.CheckBox chkUseBestPaceEver;
     }
 }
