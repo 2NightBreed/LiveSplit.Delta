@@ -31,6 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.rdoMilliseconds = new System.Windows.Forms.RadioButton();
             this.rdoSeconds = new System.Windows.Forms.RadioButton();
             this.rdoTenths = new System.Windows.Forms.RadioButton();
             this.rdoHundredths = new System.Windows.Forms.RadioButton();
@@ -44,18 +45,17 @@
             this.chkTwoRows = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnTextColor = new System.Windows.Forms.Button();
-            this.chkOverrideTextColor = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtCustomAhead = new System.Windows.Forms.TextBox();
             this.chkOverrideText = new System.Windows.Forms.CheckBox();
             this.chkDifferentialText = new System.Windows.Forms.CheckBox();
             this.lblCustomText = new System.Windows.Forms.Label();
             this.txtCustom = new System.Windows.Forms.TextBox();
             this.lblCustomTextAhead = new System.Windows.Forms.Label();
-            this.rdoMilliseconds = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnTextColor = new System.Windows.Forms.Button();
+            this.chkOverrideTextColor = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -126,6 +126,18 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(450, 58);
             this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // rdoMilliseconds
+            // 
+            this.rdoMilliseconds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.rdoMilliseconds.AutoSize = true;
+            this.rdoMilliseconds.Location = new System.Drawing.Point(339, 35);
+            this.rdoMilliseconds.Name = "rdoMilliseconds";
+            this.rdoMilliseconds.Size = new System.Drawing.Size(108, 17);
+            this.rdoMilliseconds.TabIndex = 4;
+            this.rdoMilliseconds.TabStop = true;
+            this.rdoMilliseconds.Text = "Milliseconds";
+            this.rdoMilliseconds.UseVisualStyleBackColor = true;
             // 
             // rdoSeconds
             // 
@@ -300,6 +312,67 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(450, 170);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
+            // txtCustomAhead
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.txtCustomAhead, 2);
+            this.txtCustomAhead.Location = new System.Drawing.Point(156, 144);
+            this.txtCustomAhead.Name = "txtCustomAhead";
+            this.txtCustomAhead.Size = new System.Drawing.Size(291, 20);
+            this.txtCustomAhead.TabIndex = 4;
+            // 
+            // chkOverrideText
+            // 
+            this.chkOverrideText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkOverrideText.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.chkOverrideText, 2);
+            this.chkOverrideText.Location = new System.Drawing.Point(3, 89);
+            this.chkOverrideText.Name = "chkOverrideText";
+            this.chkOverrideText.Size = new System.Drawing.Size(232, 17);
+            this.chkOverrideText.TabIndex = 0;
+            this.chkOverrideText.Text = "Override Default Label";
+            this.chkOverrideText.UseVisualStyleBackColor = true;
+            this.chkOverrideText.CheckedChanged += new System.EventHandler(this.chkOverrideText_CheckedChanged);
+            // 
+            // chkDifferentialText
+            // 
+            this.chkDifferentialText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkDifferentialText.AutoSize = true;
+            this.chkDifferentialText.Location = new System.Drawing.Point(241, 89);
+            this.chkDifferentialText.Name = "chkDifferentialText";
+            this.chkDifferentialText.Size = new System.Drawing.Size(206, 17);
+            this.chkDifferentialText.TabIndex = 1;
+            this.chkDifferentialText.Text = "Different Label When Ahead";
+            this.chkDifferentialText.UseVisualStyleBackColor = true;
+            this.chkDifferentialText.CheckedChanged += new System.EventHandler(this.chkDifferentialText_CheckedChanged);
+            // 
+            // lblCustomText
+            // 
+            this.lblCustomText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCustomText.AutoSize = true;
+            this.lblCustomText.Location = new System.Drawing.Point(3, 120);
+            this.lblCustomText.Name = "lblCustomText";
+            this.lblCustomText.Size = new System.Drawing.Size(147, 13);
+            this.lblCustomText.TabIndex = 2;
+            this.lblCustomText.Text = "Label:";
+            // 
+            // txtCustom
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.txtCustom, 2);
+            this.txtCustom.Location = new System.Drawing.Point(156, 115);
+            this.txtCustom.Name = "txtCustom";
+            this.txtCustom.Size = new System.Drawing.Size(291, 20);
+            this.txtCustom.TabIndex = 3;
+            // 
+            // lblCustomTextAhead
+            // 
+            this.lblCustomTextAhead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCustomTextAhead.AutoSize = true;
+            this.lblCustomTextAhead.Location = new System.Drawing.Point(3, 149);
+            this.lblCustomTextAhead.Name = "lblCustomTextAhead";
+            this.lblCustomTextAhead.Size = new System.Drawing.Size(147, 13);
+            this.lblCustomTextAhead.TabIndex = 5;
+            this.lblCustomTextAhead.Text = "Label When Ahead:";
+            // 
             // groupBox1
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.groupBox1, 3);
@@ -366,79 +439,6 @@
             this.label1.Size = new System.Drawing.Size(147, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Color:";
-            // 
-            // txtCustomAhead
-            // 
-            this.tableLayoutPanel3.SetColumnSpan(this.txtCustomAhead, 2);
-            this.txtCustomAhead.Location = new System.Drawing.Point(156, 144);
-            this.txtCustomAhead.Name = "txtCustomAhead";
-            this.txtCustomAhead.Size = new System.Drawing.Size(291, 20);
-            this.txtCustomAhead.TabIndex = 4;
-            // 
-            // chkOverrideText
-            // 
-            this.chkOverrideText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkOverrideText.AutoSize = true;
-            this.tableLayoutPanel3.SetColumnSpan(this.chkOverrideText, 2);
-            this.chkOverrideText.Location = new System.Drawing.Point(3, 89);
-            this.chkOverrideText.Name = "chkOverrideText";
-            this.chkOverrideText.Size = new System.Drawing.Size(232, 17);
-            this.chkOverrideText.TabIndex = 0;
-            this.chkOverrideText.Text = "Override Default Label";
-            this.chkOverrideText.UseVisualStyleBackColor = true;
-            this.chkOverrideText.CheckedChanged += new System.EventHandler(this.chkOverrideText_CheckedChanged);
-            // 
-            // chkDifferentialText
-            // 
-            this.chkDifferentialText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkDifferentialText.AutoSize = true;
-            this.chkDifferentialText.Location = new System.Drawing.Point(241, 89);
-            this.chkDifferentialText.Name = "chkDifferentialText";
-            this.chkDifferentialText.Size = new System.Drawing.Size(206, 17);
-            this.chkDifferentialText.TabIndex = 1;
-            this.chkDifferentialText.Text = "Different Label When Ahead";
-            this.chkDifferentialText.UseVisualStyleBackColor = true;
-            this.chkDifferentialText.CheckedChanged += new System.EventHandler(this.chkDifferentialText_CheckedChanged);
-            // 
-            // lblCustomText
-            // 
-            this.lblCustomText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCustomText.AutoSize = true;
-            this.lblCustomText.Location = new System.Drawing.Point(3, 120);
-            this.lblCustomText.Name = "lblCustomText";
-            this.lblCustomText.Size = new System.Drawing.Size(147, 13);
-            this.lblCustomText.TabIndex = 2;
-            this.lblCustomText.Text = "Label:";
-            // 
-            // txtCustom
-            // 
-            this.tableLayoutPanel3.SetColumnSpan(this.txtCustom, 2);
-            this.txtCustom.Location = new System.Drawing.Point(156, 115);
-            this.txtCustom.Name = "txtCustom";
-            this.txtCustom.Size = new System.Drawing.Size(291, 20);
-            this.txtCustom.TabIndex = 3;
-            // 
-            // lblCustomTextAhead
-            // 
-            this.lblCustomTextAhead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCustomTextAhead.AutoSize = true;
-            this.lblCustomTextAhead.Location = new System.Drawing.Point(3, 149);
-            this.lblCustomTextAhead.Name = "lblCustomTextAhead";
-            this.lblCustomTextAhead.Size = new System.Drawing.Size(147, 13);
-            this.lblCustomTextAhead.TabIndex = 5;
-            this.lblCustomTextAhead.Text = "Label When Ahead:";
-            // 
-            // rdoMilliseconds
-            // 
-            this.rdoMilliseconds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.rdoMilliseconds.AutoSize = true;
-            this.rdoMilliseconds.Location = new System.Drawing.Point(339, 35);
-            this.rdoMilliseconds.Name = "rdoMilliseconds";
-            this.rdoMilliseconds.Size = new System.Drawing.Size(108, 17);
-            this.rdoMilliseconds.TabIndex = 4;
-            this.rdoMilliseconds.TabStop = true;
-            this.rdoMilliseconds.Text = "Milliseconds";
-            this.rdoMilliseconds.UseVisualStyleBackColor = true;
             // 
             // DeltaSettings
             // 
